@@ -1,6 +1,6 @@
 {
   "name": "@databank/dynadot",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Module to access the dynadot domain API",
   "main": "index.js",
   "scripts": {

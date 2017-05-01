@@ -115,3 +115,30 @@ Dynadot.prototype.register = function(domain, duration, cb) {
 		return  cb({errorCode: "error", errorMessage: 'Unhandled error', rar_response: body })
 	})
 }
+
+
+Dynadot.prototype.set_ns = function(domain, nsz, cb) {
+	var rqurl = 'https://api.dynadot.com/api2.html?key=' + this.options.key + '&command=set_ns&domain=' + domain + '&'  + nsz.map(function(n, idx) { return "ns"+(idx+1)+"="+n }).join('&')
+	request({
+		'url':rqurl,
+		'proxy': this.options.proxy
+	}, function (err, res, body) {
+		if (err)
+			return cb(err)
+
+		if (res.statusCode !== 200)
+			return cb({errorCode: "Invalid HTTP response code"})
+
+
+		var dynadot_status = (body.split("\n\n")[0] || '').split(',')
+		var dynadot_data   = body.split("\n\n").slice(1).join("\n\n")
+
+		if (dynadot_status[0] === 'error')
+			return  cb({errorCode: "error", errorMessage: dynadot_status[1] })
+
+		if (dynadot_status[0] !== 'ok')
+			return  cb({errorCode: "Invalid dynadot response, expected ok, received " + dynadot_status[0], errorMessage: dynadot_status[1] })
+
+		cb(null)
+	})
+}
