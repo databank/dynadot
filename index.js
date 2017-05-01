@@ -1,6 +1,5 @@
 var request = require('request')
 var https = require('https')
-var HttpsProxyAgent = require('https-proxy-agent')
 
 module.exports = function(options) {
 	return new Dynadot(options)
