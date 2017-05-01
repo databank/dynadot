@@ -1,0 +1,14 @@
+{
+  "name": "@databank/dynadot",
+  "version": "1.0.0",
+  "description": "Module to access the dynadot domain API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "depencencies": {
+	  "request": "*"
+  }
+}
