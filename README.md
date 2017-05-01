@@ -4,16 +4,13 @@
 ```
 npm install @databank/dynadot
 
-var dynadot = require('@databank/dynadot')
-
-var dynadot = require('../index.js')({
+var dynadot = require('@databank/dynadot')({
 	key: "your-dynadot-api-key",
 
 	// dynadot requires api requests to be made from known IPs
 	// optional, specity a proxy to route api calls trough it
 	// proxy: "http://1.2.3.4:5678",
 })
-
 
 // check domain availability
 dynadot.search(['mydomain.com', 'inexisting.extension','hopethisdomainisnotregistered.com'], function(err, res ) {
