@@ -1,4 +1,4 @@
-# dynadot
+## npm package to check availability and register domains with Dynadot
 
 
 ```
